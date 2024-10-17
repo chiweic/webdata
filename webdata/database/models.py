@@ -1,4 +1,5 @@
 import uuid
+from datetime import time
 
 from sqlalchemy import Column, ForeignKey, Table, orm
 from sqlalchemy.dialects.postgresql import UUID
@@ -40,3 +41,12 @@ class Potion(Base):
         backref="potions",
         lazy="selectin",
     )
+
+class Event(Base):
+    """Event database model"""
+
+    __tablename__ = 'events'
+
+    start_time: orm.Mapped[time]
+    end_time = orm.Mapped[time]
+    location = orm.Mapped[str]

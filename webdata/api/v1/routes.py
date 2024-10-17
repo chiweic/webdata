@@ -83,3 +83,15 @@ async def get_potion(
             detail="Potion does not exist",
         )
     return models.Potion.model_validate(potion)
+
+
+@router.post("/events", status_code=status.HTTP_201_CREATED)
+async def create_event(
+    data: models.EventPayload,
+    session: AsyncSession = Depends(get_db_session),
+) -> models.Event:
+    event = db_models.Event(**data.model_dump())
+    session.add(event)
+    await session.commit()
+    await session.refresh(event)
+    return models.Event.model_validate(event)
