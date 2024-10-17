@@ -24,3 +24,8 @@ The following steps are used when running everythong "local" (on a dev machine)
 Steps on doing adding object to the code base (example: event)
 
 1. get your head around pydantic model before getting into database, so atart on webdata/api/models.py
+2. add codes on the database to support the sqlalchemy orm model
+3. add a simple post on the routes to make sure things work
+4. run alembic revision --autogenerate -m "adding events"
+5. and alembic upgrade head (you should see the SQL statement generated from version from alembic folder)
+6. tested under api/docs
