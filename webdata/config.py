@@ -13,7 +13,7 @@ class Settings(BaseSettings):
     environment: str = "local"
 
     # Database
-    database_url: str = ""
+    DATABASE_URL: str = ""
 
 
 settings = Settings()
