@@ -3,10 +3,10 @@ from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, status
 
-from alchemist.api import models
-from alchemist.api.v2.dependencies import get_repository
-from alchemist.database import models as db_models
-from alchemist.database.repository import DatabaseRepository
+from webdata.api import models
+from webdata.api.v2.dependencies import get_repository
+from webdata.database import models as db_models
+from webdata.database.repository import DatabaseRepository
 
 router = APIRouter(prefix="/v2", tags=["v2"])
 

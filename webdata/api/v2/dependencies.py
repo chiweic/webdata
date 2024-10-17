@@ -3,7 +3,7 @@ from collections.abc import Callable
 from fastapi import Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from alchemist.database import models, repository, session
+from webdata.database import models, repository, session
 
 
 def get_repository(

@@ -10,10 +10,10 @@ from sqlalchemy.ext.asyncio import (
     create_async_engine,
 )
 
-from alchemist.app import app
-from alchemist.config import settings
-from alchemist.database.models import Base
-from alchemist.database.session import get_db_session
+from webdata.app import app
+from webdata.config import settings
+from webdata.database.models import Base
+from webdata.database.session import get_db_session
 
 
 @pytest_asyncio.fixture()

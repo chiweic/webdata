@@ -3,8 +3,8 @@ import logging
 
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from alchemist.config import settings
-from alchemist.database.models import Base
+from webdata.config import settings
+from webdata.database.models import Base
 
 logger = logging.getLogger()
 

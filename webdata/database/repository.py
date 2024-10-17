@@ -4,7 +4,7 @@ from typing import Generic, TypeVar
 from sqlalchemy import BinaryExpression, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from alchemist.database import models
+from webdata.database import models
 
 Model = TypeVar("Model", bound=models.Base)
 

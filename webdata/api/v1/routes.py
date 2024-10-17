@@ -4,9 +4,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from alchemist.api import models
-from alchemist.database import models as db_models
-from alchemist.database.session import get_db_session
+from webdata.api import models
+from webdata.database import models as db_models
+from webdata.database.session import get_db_session
 
 router = APIRouter(prefix="/v1", tags=["v1"])
 
