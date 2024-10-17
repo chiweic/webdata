@@ -19,3 +19,4 @@ The following steps are used when running everythong "local" (on a dev machine)
        config.set_main_option('sqlalchemy.url', settings.DATABASE_URL)
     c. on the env.py you need to import all models that needs to be handled by alembic (all database models)
     d. then let alembic do the first migration: alembic revision --autogenerate -m "Initial tables"
+    e. finally do you revision by typing alembic upgrade head (and once you change any definition, you should run this again...)
