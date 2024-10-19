@@ -8,6 +8,7 @@ from webdata.api import models
 from webdata.database import models as db_models
 from webdata.database.session import get_db_session
 
+
 router = APIRouter(prefix="/v1", tags=["v1"])
 
 
@@ -44,6 +45,19 @@ async def get_ingredient(
         )
     return models.Ingredient.model_validate(ingredient)
 
+@router.delete("/ingredients/{pk}", status_code=status.HTTP_200_OK)
+async def delete_ingredient(
+    pk: uuid.UUID,
+    session: AsyncSession = Depends(get_db_session),
+):
+    ingredient = await session.get(db_models.Ingredient, pk)
+    if ingredient is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Ingredient does not exist",
+        )
+    await session.delete(ingredient)
+    return {'ok': True}
 
 @router.post("/potions", status_code=status.HTTP_201_CREATED)
 async def create_potion(
@@ -85,13 +99,3 @@ async def get_potion(
     return models.Potion.model_validate(potion)
 
 
-@router.post("/events", status_code=status.HTTP_201_CREATED)
-async def create_event(
-    data: models.EventPayload,
-    session: AsyncSession = Depends(get_db_session),
-) -> models.Event:
-    event = db_models.Event(**data.model_dump())
-    session.add(event)
-    await session.commit()
-    await session.refresh(event)
-    return models.Event.model_validate(event)

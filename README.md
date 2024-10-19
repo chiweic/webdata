@@ -29,3 +29,9 @@ Steps on doing adding object to the code base (example: event)
 4. run alembic revision --autogenerate -m "adding events"
 5. and alembic upgrade head (you should see the SQL statement generated from version from alembic folder)
 6. tested under api/docs
+
+Noted,
+
+Although you migh be thinking that we can just iterate on alembic (generate, upgrade cycle), but the SQL statement
+(alter column, table etc.,) only WORK when no existing record/data presented, otherwise you will run into none-NULL value 
+(previous CRUD). So, delete all record when you debug a post/create for this to work.
